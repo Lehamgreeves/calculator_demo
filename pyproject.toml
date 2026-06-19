@@ -1,5 +1,5 @@
 [project]
-name = "advanced-python-calculator"
+name = "calculator_demo"
 version = "0.1.0"
 description = "A reusable Python calculator package for learning GitHub collaboration."
 authors = [
