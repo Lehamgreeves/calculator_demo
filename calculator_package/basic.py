@@ -1,104 +1,37 @@
-"""
-basic.py
-
-This module contains basic calculator operations.
-"""
-
-
-def add(a, b):
-    """
-    Add two numbers.
-
-    Args:
-        a (float): First number.
-        b (float): Second number.
-
-    Returns:
-        float: Sum of a and b.
-    """
-    return a + b
+class CalculatorInterface:
+    def calculate(self, operation: str, a: float, b: float) -> float:
+        """Abstract method that must be implemented by any child class."""
+        pass
 
 
-def subtract(a, b):
-    """
-    Subtract one number from another.
+class BasicCalculator(CalculatorInterface):
 
-    Args:
-        a (float): First number.
-        b (float): Second number.
+    def __init__(self):
+        self.__latest_result = 0.0
 
-    Returns:
-        float: Difference between a and b.
-    """
-    return a - b
+    # Getter method to safely access the private variable
+    def get_latest_result(self):
+        return self.__latest_result
 
+    # Setter method to safely update the private variable internally
+    def _update_result(self, value):
+        self.__latest_result = value
 
-def multiply(a, b):
-    """
-    Multiply two numbers.
+    # Implementing the abstract method
+    def calculate(self, operation: str, a: float, b: float) -> float:
+        if operation == "add":
+            self._update_result(a + b)
+        elif operation == "subtract":
+            self._update_result(a - b)
+        elif operation == "multiply":
+            self._update_result(a * b)
+        elif operation == "Divide":
+            self._update_result(a / b)
+        elif operation == "modulus":
+            self._update_result(a % b)
+        elif operation == "floor_divide":
+            self._update_result(a // b)
+        else:
+            raise ValueError(f"Operation '{operation}' not supported by BasicCalculator.")
 
-    Args:
-        a (float): First number.
-        b (float): Second number.
-
-    Returns:
-        float: Product of a and b.
-    """
-    return a * b
-
-
-def divide(a, b):
-    """
-    Divide one number by another.
-
-    Args:
-        a (float): Numerator.
-        b (float): Denominator.
-
-    Returns:
-        float: Result of division.
-
-    Raises:
-        ValueError: If b is zero.
-    """
-    if b == 0:
-        raise ValueError("Cannot divide by zero.")
-    return a / b
-
-
-def modulus(a, b):
-    """
-    Return the remainder after division.
-
-    Args:
-        a (float): First number.
-        b (float): Second number.
-
-    Returns:
-        float: Remainder.
-
-    Raises:
-        ValueError: If b is zero.
-    """
-    if b == 0:
-        raise ValueError("Cannot calculate modulus by zero.")
-    return a % b
-
-
-def floor_divide(a, b):
-    """
-    Return the floor division result.
-
-    Args:
-        a (float): First number.
-        b (float): Second number.
-
-    Returns:
-        float: Floor division result.
-
-    Raises:
-        ValueError: If b is zero.
-    """
-    if b == 0:
-        raise ValueError("Cannot floor divide by zero.")
-    return a // b
+        return self.get_latest_result()

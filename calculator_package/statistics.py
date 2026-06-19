@@ -1,118 +1,120 @@
-"""
-statistics.py
-
-This module contains statistics calculator functions.
-"""
-
 from collections import Counter
 
-
-def mean(numbers):
+class StatisticsCalculator:
     """
-    Calculate the mean of a list of numbers.
-
-    Args:
-        numbers (list): List of numbers.
-
-    Returns:
-        float: Mean value.
-
-    Raises:
-        ValueError: If list is empty.
+    A class to calculate various statistics for a list of numbers.
     """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
-    return sum(numbers) / len(numbers)
 
+    def mean(self, numbers: list) -> float:
+        """
+        Calculate the mean of a list of numbers.
 
-def median(numbers):
-    """
-    Calculate the median of a list of numbers.
+        Args:
+            numbers (list): List of numbers.
 
-    Args:
-        numbers (list): List of numbers.
+        Returns:
+            float: Mean value.
 
-    Returns:
-        float: Median value.
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
+        return sum(numbers) / len(numbers)
 
-    Raises:
-        ValueError: If list is empty.
-    """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
+    def median(self, numbers: list) -> float:
+        """
+        Calculate the median of a list of numbers.
 
-    sorted_numbers = sorted(numbers)
-    length = len(sorted_numbers)
-    middle = length // 2
+        Args:
+            numbers (list): List of numbers.
 
-    if length % 2 == 0:
-        return (sorted_numbers[middle - 1] + sorted_numbers[middle]) / 2
+        Returns:
+            float: Median value.
 
-    return sorted_numbers[middle]
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
 
+        sorted_numbers = sorted(numbers)
+        length = len(sorted_numbers)
+        middle = length // 2
 
-def mode(numbers):
-    """
-    Calculate the mode of a list of numbers.
+        if length % 2 == 0:
+            return (sorted_numbers[middle - 1] + sorted_numbers[middle]) / 2
 
-    Args:
-        numbers (list): List of numbers.
+        return float(sorted_numbers[middle])
 
-    Returns:
-        int or float: Most common number.
+    def mode(self, numbers: list):
+        """
+        Calculate the mode of a list of numbers.
 
-    Raises:
-        ValueError: If list is empty.
-    """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
+        Args:
+            numbers (list): List of numbers.
 
-    counter = Counter(numbers)
-    most_common = counter.most_common(1)
+        Returns:
+            int or float: Most common number.
 
-    return most_common[0][0]
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
 
+        counter = Counter(numbers)
+        most_common = counter.most_common(1)
 
-def minimum(numbers):
-    """
-    Return the smallest number in a list.
+        return most_common[0][0]
 
-    Args:
-        numbers (list): List of numbers.
+    def minimum(self, numbers: list):
+        """
+        Return the smallest number in a list.
 
-    Returns:
-        int or float: Smallest number.
-    """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
-    return min(numbers)
+        Args:
+            numbers (list): List of numbers.
 
+        Returns:
+            int or float: Smallest number.
 
-def maximum(numbers):
-    """
-    Return the largest number in a list.
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
+        return min(numbers)
 
-    Args:
-        numbers (list): List of numbers.
+    def maximum(self, numbers: list):
+        """
+        Return the largest number in a list.
 
-    Returns:
-        int or float: Largest number.
-    """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
-    return max(numbers)
+        Args:
+            numbers (list): List of numbers.
 
+        Returns:
+            int or float: Largest number.
 
-def data_range(numbers):
-    """
-    Calculate the range of a list of numbers.
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
+        return max(numbers)
 
-    Args:
-        numbers (list): List of numbers.
+    def data_range(self, numbers: list):
+        """
+        Calculate the range of a list of numbers.
 
-    Returns:
-        int or float: Difference between maximum and minimum values.
-    """
-    if len(numbers) == 0:
-        raise ValueError("List cannot be empty.")
-    return max(numbers) - min(numbers)
+        Args:
+            numbers (list): List of numbers.
+
+        Returns:
+            int or float: Difference between maximum and minimum values.
+
+        Raises:
+            ValueError: If list is empty.
+        """
+        if not numbers:
+            raise ValueError("List cannot be empty.")
+        return max(numbers) - min(numbers)
