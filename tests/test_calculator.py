@@ -4,23 +4,7 @@ test_calculator.py
 Basic tests for the calculator package.
 """
 
-from calculator_package import (
-    add,
-    subtract,
-    multiply,
-    divide,
-    modulus,
-    floor_divide,
-    power,
-    square_root,
-    factorial,
-    percentage,
-    mean,
-    median,
-    mode,
-    minimum,
-    maximum,
-    data_range,
+from calculator_package import (BasicCalculator,AdvancedCalculator, StatisticsCalculator
 )
 
 
