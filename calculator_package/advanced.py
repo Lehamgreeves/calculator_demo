@@ -41,7 +41,7 @@ class AdvancedCalculator(BasicCalculator):
     def calculate(self, operation: str, a: float, b: float) -> float:
         if operation == "power":
             self._update_result(a ** b)
-            return self.get_latest_result()
+        return self.get_latest_result()
 
         # If it's not 'power', hand it off to the parent class (BasicCalculator)
         return super().calculate(operation, a, b)
